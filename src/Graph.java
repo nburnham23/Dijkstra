@@ -113,24 +113,6 @@ public class Graph {
             explored_nodes.add(shortest_link.n2);
         }
 
-        /*
-        ArrayList<Node> explored_nodes = new ArrayList();
-        for (Node n: this.nodes) {
-            n.distance = MAX_VALUE;
-        }
-        explored_nodes.add(s);
-        s.distance = 0;
-        while(!(explored_nodes == this.nodes)){
-            Link shortest_link = explored_nodes[0].adjlist[0];
-            for(Link l : explored_nodes[0].adjlist){
-                // need to modify this to minimize d[s] + this weight
-                if(l.weight < shortest_link.weight && !explored_nodes.contains(l.n2)){
-                    shortest_link = l;
-                }
-            }
-            Node next_node = adjlist.find(shortest_link).n2;
-            explored_nodes.add(next_node);
-        }*/
     } // shortestPath()
 
     //----------------------------------------------------
