@@ -89,24 +89,30 @@ public class Graph {
          */
         Node fake_node = new Node("fake");
         ArrayList<Node> explored_nodes = new ArrayList<Node>(nodes.size());
-        ArrayList<Node> unexplored_nodes = new ArrayList<Node>(nodes.size());
+        // initialize all distances to "infinity"
         for(Node n : nodes){
             n.distance = Integer.MAX_VALUE;
-            unexplored_nodes.add(n);
         }
+        // explore start node
         explored_nodes.add(s);
+        // set start node distance to 0
         s.distance = 0;
         while(explored_nodes.size() != this.nodes.size()){
-            Node u = explored_nodes.get(explored_nodes.size()-1);
+            // go through the explored nodes to select the one with the largest distance
+            Node u = new Node("node");
+            u.distance = 0;
+            // dummy link to compare with others
             Link shortest_link = new Link(fake_node, MAX_VALUE);
-            for(Link l : u.adjlist){
-                Node v = l.n2;
-                if(!explored_nodes.contains(v)){
-                    if(v.distance > u.distance + l.weight){
-                        v.distance = u.distance + l.weight;
-                    }
-                    if(l.weight < shortest_link.weight){
+            for (Node n : explored_nodes) {
+                if (n.distance >= u.distance){
+                    u = n;
+                }
+                // explore all the nodes in adjacency list to find one with minimum distance to start node
+                for(Link l : u.adjlist){
+                    Node v = l.n2;
+                    if(!(explored_nodes.contains(v)) && (v.distance > u.distance + l.weight) && (l.weight < shortest_link.weight)){
                         shortest_link = l;
+                        v.distance = u.distance + l.weight;
                     }
                 }
             }
