@@ -75,18 +75,6 @@ public class Graph {
     //----------------------------------------------------
 
     public void shortestPath(Node s) {
-        // implement this
-        /*
-        Dijkstra’s Algorithm (G, s)
-        Initially, 𝑆 = {𝑠} and d[s] = 0
-        Let 𝑆 be the set of explored nodes
-        // for each 𝑢 ∈ 𝑆, we will compute and save a distance d[u]
-        While 𝑆 ≠ 𝑉
-            select the node 𝑣 ∉ 𝑆 having an edge with one end in 𝑆 for which
-            the distance from 𝑠 to 𝑣 through nodes of 𝑆 is as small as possible
-            add 𝑣 to 𝑆 and set d[v] to that distance
-         EndWhile
-         */
         Node fake_node = new Node("fake");
         ArrayList<Node> explored_nodes = new ArrayList<Node>(nodes.size());
         // initialize all distances to "infinity"
@@ -124,7 +112,6 @@ public class Graph {
     //----------------------------------------------------
 
     public void shortestPathPQ(Node s) {
-        // implement this
         PriorityQueue<Node> PQ = new PriorityQueue<Node>(nodes.size());
         ArrayList<Node> explored_nodes = new ArrayList<Node>(nodes.size());
         for(Node n : this.nodes) {
